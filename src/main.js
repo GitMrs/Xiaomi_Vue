@@ -3,6 +3,8 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Vuelazyload from 'vue-lazyload';
 import VueCookie from 'vue-cookie';
+import { Message } from 'element-ui';
+
 import App from './App.vue'
 import router from './router';
 import store from './store/index';
@@ -31,8 +33,11 @@ server.interceptors.response.use(function (response) { // 响应拦截
     if (path != '#/index') {
       window.location.href = '/#/login';
     }
+    Message.warning(res.msg)
+    return Promise.reject();
   } else {
-    alert(res.msg)
+    Message.warning(res.msg)
+    // alert(res.msg)
     return Promise.reject();
   }
 })
@@ -41,6 +46,10 @@ Vue.use(Vuelazyload, {
   loading: '/imgs/loading-svg/loading-spin.svg'
 })
 Vue.use(VueCookie);
+/**
+ * 引入部分element 模块
+ */
+Vue.prototype.$message = Message;
 new Vue({
   render: h => h(App),
   router,

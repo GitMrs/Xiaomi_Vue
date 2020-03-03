@@ -2,18 +2,18 @@
   <div class="Home">
     <OrderHeader />
     <router-view></router-view>
-    <OrderFooter />
+    <NavFooter />
   </div>
 </template>
 
 <script>
 import OrderHeader from '../components/order_header';
-import OrderFooter from '../components/order_footer';
+import NavFooter from '../components/nav_footer';
 export default {
   name:'Home',
   components:{
     OrderHeader,
-    OrderFooter
+    NavFooter
   }
 }
 </script>

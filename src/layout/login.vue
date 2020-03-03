@@ -57,26 +57,44 @@ export default {
     return {
       form: {
         username: "jack",
-        password: "jack",
+        password: "jack"
       },
-      userId:""
+      userId: ""
     };
   },
-  methods:{
-    loginBtn(){
-      this.axios.post('/user/login',this.form).then(res => {
-        this.$cookie.set('userId',res.id,{expires:'1M'})
+  methods: {
+    loginBtn() {
+      this.axios.post("/user/login", this.form).then(res => {
+        this.$cookie.set("userId", res.id, { expires: "Session" });
         //to-do 保存用户名，保存用户信息
-        this.$store.dispatch('saveUserName',res.username)
-        this.$router.push('/index')
-        console.log(res)
-      })
+        this.$store.dispatch("saveUserName", res.username);
+        //  query 类似于get方式！拼接地址
+        // this.$router.push({
+        //   path: "/index",
+        //   query: {
+        //     from: "login"
+        //   }
+        // });
+        // params 类似于post 不拼接地址，但是需要使用name,和vue-router里面的name一样
+        this.$router.push({
+          name: "index",
+          params: {
+            from: "login"
+          }
+        });
+      });
     },
-    register(){
-      this.axios.post('/user/register',{username:'admin',password:'123456',email:'admin@22.com'}).then(res => {
-        console.log(res)
-        alert('注册成功')
-      })
+    register() {
+      this.axios
+        .post("/user/register", {
+          username: "admin",
+          password: "123456",
+          email: "admin@22.com"
+        })
+        .then(res => {
+          console.log(res);
+          alert("注册成功");
+        });
     }
   }
 };

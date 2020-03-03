@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --mod=development",
+    "serve": "vue-cli-service serve --mode=development",
     "build": "vue-cli-service build --mode=production",
     "prev": "vue-cli-service serve --mode=prev",
     "test": "vue-cli-service build --mode=test",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "babel-plugin-component": "^1.1.1",
     "core-js": "^3.6.4",
     "element-ui": "^2.13.0",
     "mockjs": "^1.1.0",

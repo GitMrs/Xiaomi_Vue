@@ -12,8 +12,7 @@
         </div>
         <div class="modal-footer">
           <a href="javascript:;" v-if="btnType === 1" @click="$emit('submit')" class="btn">{{sureText}}</a>
-          <a href="javascript:;" v-if="btnType === 2" @click="$emit('cancel')" class="btn">{{cancelText}}</a>
-
+          <a href="javascript:;" v-else-if="btnType === 2" @click="$emit('cancel')" class="btn">{{cancelText}}</a>
           <div class="btn-group" v-else>
             <a href="javascript:;" class="btn" @click="$emit('submit')">{{sureText}}</a>
             <a href="javascript:;" class="btn" @click="$emit('cancel')">{{cancelText}}</a>

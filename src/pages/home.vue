@@ -11,7 +11,7 @@
                   <ul v-for="(item,index) in menuList" :key="index">
                     <li v-for="(sub,_index) in item" :key="_index">
                       <a :href="'/#/product/' + (sub.id ?sub.id : 0)">
-                        <img  v-lazy="sub ? sub.img :'/imgs/item-box-1.png'" alt />
+                        <img v-lazy="sub ? sub.img :'/imgs/item-box-1.png'" alt />
                         {{sub ? sub.name : '小米9'}}
                       </a>
                     </li>
@@ -45,7 +45,7 @@
         <swiper :options="swiperOption">
           <swiperSlide v-for="(item,index) in swiperList" :key="index">
             <a :href="'/#/product/' + item.id">
-              <img  v-lazy="item.img" />
+              <img v-lazy="item.img" />
             </a>
           </swiperSlide>
           <!-- optional controls -->
@@ -61,7 +61,7 @@
       </div>
       <div class="banner">
         <a :href="'/#/product/80'">
-          <img  v-lazy="'/imgs/banner-1.png'" />
+          <img v-lazy="'/imgs/banner-1.png'" />
         </a>
       </div>
     </div>
@@ -71,7 +71,7 @@
         <div class="wrapper">
           <div class="banner-left">
             <a href="/#/product/11">
-              <img  v-lazy="'/imgs/mix-alpha.jpg'" alt />
+              <img v-lazy="'/imgs/mix-alpha.jpg'" alt />
             </a>
           </div>
           <div class="list-box">
@@ -79,7 +79,7 @@
               <div class="item" v-for="(sub,_index) in item" :key="_index">
                 <span class="new-pro">新品</span>
                 <div class="item-img">
-                  <img  v-lazy="'/imgs/item-box-1.png'" alt />
+                  <img v-lazy="'/imgs/item-box-1.png'" alt />
                 </div>
                 <div class="item-info">
                   <h3>小米9</h3>
@@ -96,7 +96,7 @@
     <Modal
       title="提示"
       sureText="查看购物车"
-      :btnType='1'
+      :btnType="1"
       modalType="middle"
       :showModal="showModal"
       @submit="submit"
@@ -223,7 +223,15 @@ export default {
   },
   methods: {
     addCart() {
-      this.showModal = true;
+      this.axios
+        .post("/carts", {
+          productId: 11,
+          selected: true
+        })
+        .then(res => {
+          console.log(res);
+          this.showModal = true;
+        });
     },
     submit() {}
   },

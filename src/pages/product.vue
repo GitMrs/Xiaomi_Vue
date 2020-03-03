@@ -63,7 +63,7 @@
             <span class="icon-close" @click.stop.prevent="keyframes = 'slideUp'"></span>
             <video src="/imgs/product/video.mp4" controls="controls" muted autoplay></video>
           </div>
-        </div> -->
+        </div>-->
         <!-- transition -->
         <div class="video-box" @click="showSlider = true">
           <div class="overlay" v-if="showSlider"></div>
@@ -86,7 +86,7 @@ export default {
     return {
       showSlider: false,
       keyframes: "",
-      pruductInfo:{}
+      pruductInfo: {}
     };
   },
   mounted() {
@@ -98,14 +98,14 @@ export default {
     },
     getProduct() {
       const { id } = this.$route.params;
-      console.log(id)
+      console.log(id);
       this.axios.get(`/products/${id}`).then(res => {
-        this.pruductInfo = res
+        this.pruductInfo = res;
         console.log(res);
       });
     },
-    buyFn(){
-      this.$router.push(`/detail/${this.pruductInfo.id}`)
+    buyFn() {
+      this.$router.push(`/detail/${this.pruductInfo.id}`);
     }
   },
   components: {
@@ -204,13 +204,14 @@ export default {
         }
         .video {
           position: fixed;
-          top: -50%;
+          top: -200%;
           left: 50%;
           transform: translate3D(-50%, -50%, 0);
           z-index: 11;
           width: 1000px;
           height: 536px;
           opacity: 0;
+          /* display: none; */
           transition: all 0.6s; //transition 动画
           video {
             width: 100%;
@@ -230,6 +231,7 @@ export default {
           &.slider {
             top: 50%;
             opacity: 1;
+            /* display: block; */
           }
           &.slideDown {
             animation: sliderDown 0.6s linear forwards;
@@ -241,20 +243,24 @@ export default {
             form {
               top: -50%;
               opacity: 0;
+              display: none;
             }
             to {
               top: 50%;
               opacity: 1;
+              display: block;
             }
           }
           @keyframes sliderUp {
             form {
               top: 50%;
               opacity: 1;
+              display: block;
             }
             to {
               top: -50%;
               opacity: 0;
+              display: none;
             }
           }
         }

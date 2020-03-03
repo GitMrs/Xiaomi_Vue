@@ -6,7 +6,7 @@ import Login from '../layout/login';
 import Index from '../pages/home';
 import Product from '../pages/product';
 import Detail from '../pages/detail';
-import Card from '../layout/card';
+import Card from '../layout/cart';
 import Order from '../layout/order';
 import OrderConfirm from '../pages/orderConfirm';
 import OrderPay from '../pages/orderPay';
@@ -29,7 +29,7 @@ export default new Router({
       children: [
         {
           path: '/index',
-          name: '首页',
+          name: 'index',
           component: Index
         },
         {
@@ -45,8 +45,8 @@ export default new Router({
       ]
     },
     {
-      path: '/card',
-      name: 'card',
+      path: '/cart',
+      name: 'cart',
       component: Card
     },
     {
