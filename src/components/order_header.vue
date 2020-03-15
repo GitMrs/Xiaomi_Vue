@@ -52,6 +52,7 @@ export default {
     h2 {
       font-size: 28px;
       color: #333;
+      display: inline-block;
     }
     span {
       font-size: 14px;

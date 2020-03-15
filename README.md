@@ -64,6 +64,51 @@
         }
       })
     ```
+# vue.config.js
+  1. vue-cli 
+# vue 按需加载
+  1. 使用 Promise  resolve => require(['../xxx/xxx']resolve)
+  2. 使用import 新语法 () => import('../xxxx/xxx');
+  3. 按需加载删除预加载 ，在vue.config.js 删除babel里面的prefetch
+# 部署
+  1. 购买服务器
+  2. 购买域名，解析
+
+  3. nginx 安装 
+    ```
+      yum install nginx // 安装 
+      which nginx //查看文件路径
+      nginx -t // 看nginx配置文件
+      vi nginx.config //配置nginx
+      在nginx.config 里面添加 其他配置
+       include /etc/nginx/vhosts/*.conf 
+      server {
+        listen 80; // 端口
+        server_name mi.futurefe.com; // 域名
+        root /wokespace/mimall; // 路径
+        index index.html index.htm login.htnl; //文件
+        location ^_/api/ { // 请求反向代理路径设计
+          proxy_pass http://mall-pre.springboot.cn/
+        } 
+        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)${ //图片配置
+          root /worksapce/mimall;
+        }
+        location ~ .*\.(js|html|css)?${ // js,css 配置
+          root /workspace/mimall;
+          express 30d:
+        }
+      }
+      nginx -s stop // 停止
+      nginx -s reload // 重启
+   ```
+   4. node 安装
+    ```
+      wget 'xxxx路径'
+      tar -xvf xxx 解压
+      echo $PATH // 查看路径
+      // 创建node的软连接还有npm
+      ln -s /soft/xxxxx  /user/bin/node
+    ```
 
 ## Project setup
 ```

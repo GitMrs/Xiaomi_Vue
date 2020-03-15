@@ -4,12 +4,12 @@ import VueAxios from 'vue-axios';
 import Vuelazyload from 'vue-lazyload';
 import VueCookie from 'vue-cookie';
 import { Message } from 'element-ui';
-
 import App from './App.vue'
 import router from './router';
 import store from './store/index';
 import env from './env';
 // console.log(env);
+import './assets/scss/element-variables.scss';
 
 // mock数据
 const mock = false; // mock 开关
@@ -40,6 +40,10 @@ server.interceptors.response.use(function (response) { // 响应拦截
     // alert(res.msg)
     return Promise.reject();
   }
+}, (err) => { // http 状态码拦截
+  let res = err.response;
+  Message.warning(res.data.message);
+  return Promise.reject(err)
 })
 Vue.use(VueAxios, server)
 Vue.use(Vuelazyload, {
