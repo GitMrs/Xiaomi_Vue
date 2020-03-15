@@ -100,7 +100,7 @@
       }
       nginx -s stop // 停止
       nginx -s reload // 重启
-   ```
+    ```
    4. node 安装
     ```
       wget 'xxxx路径'
