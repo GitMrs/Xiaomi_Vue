@@ -98,6 +98,7 @@
           express 30d:
         }
       }
+      
       nginx -s stop // 停止
       nginx -s reload // 重启
     ```
